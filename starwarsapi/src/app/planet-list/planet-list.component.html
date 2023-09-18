@@ -1,0 +1,9 @@
+<div>
+  <button (click)="getPlanets()">Alle Planeten</button>
+</div>
+<div *ngIf="planets.length > 0">
+  <h2>Planets</h2>
+  <ul>
+    <li *ngFor="let planet of planets">{{ planet.name }}</li>
+  </ul>
+</div>
