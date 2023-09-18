@@ -1,9 +1,20 @@
-<div>
-  <button (click)="getPlanets()">Alle Planeten</button>
-</div>
-<div *ngIf="planets.length > 0">
-  <h2>Planets</h2>
-  <ul>
-    <li *ngFor="let planet of planets">{{ planet.name }}</li>
-  </ul>
+<input type="text" [(ngModel)]="searchText" placeholder="Planetname...">
+<button (click)="searchPlanet()">Zeige Details</button>
+
+<button (click)="getPlanets()">Alle Planeten</button>
+
+<ul>
+  <li *ngFor="let planet of planets">
+    <a (click)="getPlanetDetails(planet)">{{ planet.name }}</a>
+  </li>
+</ul>
+
+<div *ngIf="selectedPlanet">
+  <h2>{{ selectedPlanet.name }}</h2>
+  <p>Durchmesser (in km): {{ selectedPlanet.diameter }}</p>
+  <p>Climate: {{ selectedPlanet.climate }}</p>
+  <p>Gelände: {{ selectedPlanet.terrain }}</p>
+  <p>Einwohner: {{ selectedPlanet.population }} </p>
+  <p>Tageslänge (in h): {{ selectedPlanet.rotation_period }}</p>
+  <p>Jahreslänge (in d): {{ selectedPlanet.orbital_period }}</p>
 </div>
